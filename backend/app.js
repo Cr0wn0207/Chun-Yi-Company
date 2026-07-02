@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import { connectDB } from './config/db.js';
+import { env } from './config/env.js';
 import newsRoutes from './routes/news.js';
 import serviceRoutes from './routes/services.js';
 import companyRoutes from './routes/company.js';
@@ -33,7 +34,15 @@ app.use('/api/admin/company', adminCompanyRoutes);
 app.use('/api/admin/contacts', adminContactRoutes);
 
 app.get('/api/health', (_req, res) => {
-  res.json({ status: 'ok', timestamp: new Date().toISOString() });
+  res.json({
+    status: 'ok',
+    timestamp: new Date().toISOString(),
+    authConfigured: {
+      jwtSecret: Boolean(env('JWT_SECRET')),
+      adminPassword: Boolean(env('ADMIN_PASSWORD') || env('ADMIN_PASSWORD_HASH')),
+      adminUsername: Boolean(env('ADMIN_USERNAME')),
+    },
+  });
 });
 
 export default app;

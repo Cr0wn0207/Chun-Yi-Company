@@ -1,9 +1,10 @@
 import mongoose from 'mongoose';
+import { env } from './env.js';
 
 const globalCache = globalThis;
 
 function getMongoUri() {
-  const uri = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/chunyi-corp';
+  const uri = env('MONGODB_URI') || 'mongodb://127.0.0.1:27017/chunyi-corp';
   return uri.replace('mongodb://localhost', 'mongodb://127.0.0.1');
 }
 
@@ -14,7 +15,7 @@ export function isDBConnected() {
 export async function connectDB() {
   if (isDBConnected()) return true;
 
-  if (!process.env.MONGODB_URI && process.env.NODE_ENV === 'production') {
+  if (!env('MONGODB_URI') && env('NODE_ENV') === 'production') {
     console.error('MONGODB_URI is not set');
     return false;
   }
@@ -50,11 +51,11 @@ export async function connectDB() {
     cache.conn = await cache.promise;
     return true;
   } catch {
-    if (process.env.VERCEL) {
+    if (env('VERCEL')) {
       return false;
     }
 
-    if (process.env.NODE_ENV === 'production') {
+    if (env('NODE_ENV') === 'production') {
       process.exit(1);
     }
 

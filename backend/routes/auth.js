@@ -2,12 +2,13 @@ import express from 'express';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { authMiddleware } from '../middleware/auth.js';
+import { env } from '../config/env.js';
 
 const router = express.Router();
 
 async function verifyPassword(password) {
-  const hash = process.env.ADMIN_PASSWORD_HASH;
-  const plain = process.env.ADMIN_PASSWORD;
+  const hash = env('ADMIN_PASSWORD_HASH');
+  const plain = env('ADMIN_PASSWORD');
 
   if (hash) {
     return bcrypt.compare(password, hash);
@@ -28,12 +29,13 @@ router.post('/login', async (req, res) => {
       return res.status(400).json({ message: 'Username and password are required' });
     }
 
-    if (!process.env.JWT_SECRET) {
+    const jwtSecret = env('JWT_SECRET');
+    if (!jwtSecret) {
       return res.status(500).json({ message: 'Server auth is not configured' });
     }
 
-    const adminUsername = process.env.ADMIN_USERNAME || 'admin';
-    const passwordConfigured = process.env.ADMIN_PASSWORD_HASH || process.env.ADMIN_PASSWORD;
+    const adminUsername = env('ADMIN_USERNAME') || 'admin';
+    const passwordConfigured = env('ADMIN_PASSWORD_HASH') || env('ADMIN_PASSWORD');
 
     if (!passwordConfigured) {
       return res.status(500).json({ message: 'Server auth is not configured' });
@@ -50,7 +52,7 @@ router.post('/login', async (req, res) => {
 
     const token = jwt.sign(
       { username: adminUsername, role: 'admin' },
-      process.env.JWT_SECRET,
+      jwtSecret,
       { expiresIn: '7d' }
     );
 
