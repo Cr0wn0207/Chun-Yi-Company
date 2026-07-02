@@ -1,0 +1,94 @@
+.vision-diagram {
+  width: 100%;
+  max-width: 480px;
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.vision-diagram-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+
+.vision-diagram-ring {
+  transform-origin: 200px 200px;
+  animation: vision-ring-spin 48s linear infinite;
+}
+
+@keyframes vision-ring-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vision-diagram-ring {
+    animation: none;
+  }
+}
+
+.vision-diagram-segment {
+  fill: #f0f0f0;
+  stroke: #fff;
+  stroke-width: 2.5;
+  transition: fill 0.35s ease;
+}
+
+.vision-diagram-segment:hover {
+  fill: #e8eaf6;
+}
+
+.vision-diagram-center-bg {
+  fill: #fff;
+  stroke: #fff;
+  stroke-width: 5;
+  pointer-events: none;
+}
+
+.vision-diagram-logo {
+  font-family: var(--font-en);
+  font-size: 52px;
+  font-weight: 800;
+  font-style: italic;
+  fill: var(--scsk-blue);
+  letter-spacing: 0.04em;
+}
+
+.vision-diagram-center-text {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  fill: var(--scsk-blue);
+  letter-spacing: 0.01em;
+}
+
+.vision-diagram-label {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  fill: var(--scsk-blue);
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 640px) {
+  .vision-diagram {
+    max-width: 340px;
+  }
+
+  .vision-diagram-logo {
+    font-size: 38px;
+  }
+
+  .vision-diagram-center-text {
+    font-size: 13px;
+  }
+
+  .vision-diagram-label {
+    font-size: 14px;
+  }
+}

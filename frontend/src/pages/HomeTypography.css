@@ -1,0 +1,258 @@
+/* Homepage typography scale — applied via body.home-page from Home.jsx */
+body.home-page {
+  --text-base: 20px;
+  --text-md: 23px;
+  --text-sm: 20px;
+  --text-xs: 17px;
+  font-size: var(--text-base);
+}
+
+/* Header — single-row nav */
+body.home-page {
+  --header-height: 80px;
+}
+
+body.home-page .logo-brand--header {
+  --logo-mark-h: clamp(46px, 5vw, 54px);
+  padding-bottom: 6px;
+}
+
+body.home-page .logo-wordmark {
+  font-size: clamp(10px, 0.95vw, 12px);
+  letter-spacing: 0.22em;
+}
+
+body.home-page .nav-link {
+  font-size: 16px;
+}
+
+/* Hero */
+body.home-page .hero-title {
+  font-size: clamp(52px, 7.5vw, 112px);
+}
+
+body.home-page .hero-text-wrap {
+  max-width: min(1240px, calc(100vw - 48px - var(--container-pad) * 2));
+}
+
+body.home-page .hero-subtitle {
+  font-size: clamp(20px, 2.2vw, 28px);
+  max-width: min(900px, calc(100vw - 48px - var(--container-pad) * 2));
+}
+
+body.home-page .hero-cta-inner {
+  min-width: 260px;
+  height: 72px;
+  padding: 0 28px;
+}
+
+body.home-page .hero-cta-text {
+  font-size: var(--text-md);
+}
+
+body.home-page .hero-cta-arrow {
+  font-size: 26px;
+}
+
+body.home-page .hero-side-dot {
+  width: 36px;
+  height: 36px;
+  font-size: var(--text-sm);
+}
+
+body.home-page .hero-side-arrow {
+  font-size: var(--text-sm);
+}
+
+body.home-page .hero-side-scroll {
+  font-size: var(--text-xs);
+}
+
+/* Section headings */
+body.home-page .section-title {
+  font-size: clamp(40px, 4.8vw, 64px);
+}
+
+body.home-page .section-subtitle {
+  font-size: var(--text-md);
+}
+
+body.home-page .view-more {
+  font-size: var(--text-md);
+}
+
+body.home-page .view-more::after {
+  font-size: 20px;
+}
+
+/* Vision */
+body.home-page .vision-lead {
+  font-size: clamp(34px, 4.2vw, 56px);
+}
+
+body.home-page .vision-body {
+  font-size: var(--text-md);
+}
+
+body.home-page .vision-diagram {
+  max-width: 500px;
+}
+
+body.home-page .vision-diagram-logo {
+  font-size: 56px;
+}
+
+body.home-page .vision-diagram-center-text {
+  font-size: 17px;
+}
+
+body.home-page .vision-diagram-label {
+  font-size: 20px;
+}
+
+/* Topics */
+body.home-page .topic-card-caption h3 {
+  font-size: clamp(15px, 1.2vw, 18px);
+}
+
+body.home-page .topic-card-caption p {
+  font-size: var(--text-sm);
+}
+
+body.home-page .news-release-more-inner {
+  font-size: var(--text-md);
+}
+
+/* Services */
+body.home-page .services-section-subtitle {
+  font-size: var(--text-md);
+}
+
+body.home-page .services-action-btn {
+  font-size: var(--text-md);
+  padding: 16px 28px;
+}
+
+body.home-page .services-action-btn-inner::after {
+  font-size: 18px;
+}
+
+body.home-page .vision-section--lang-ja .vision-lead {
+  font-size: clamp(24px, 2.9vw, 38px);
+}
+
+body.home-page .vision-section--lang-ja .vision-diagram {
+  max-width: min(100%, 380px);
+}
+
+body.home-page .service-card--featured .service-card-title {
+  font-size: clamp(26px, 2.8vw, 40px);
+}
+
+body.home-page .service-card--featured .service-card-subtitle {
+  font-size: clamp(18px, 1.9vw, 24px);
+}
+
+body.home-page .service-card--featured .service-card-arrow {
+  font-size: clamp(30px, 3vw, 44px);
+}
+
+/* News */
+body.home-page .news-release-title {
+  font-size: clamp(36px, 4vw, 56px);
+}
+
+body.home-page .news-release-rss {
+  font-size: var(--text-md);
+}
+
+body.home-page .news-release-rss::before {
+  width: 18px;
+  height: 18px;
+}
+
+body.home-page .news-item--release {
+  grid-template-columns: 140px minmax(100px, 150px) 1fr auto;
+  padding: 24px 0;
+}
+
+body.home-page .news-item--release .news-item-date {
+  font-size: var(--text-md);
+}
+
+body.home-page .news-item--release .news-item-category {
+  font-size: var(--text-sm);
+  padding: 6px 18px;
+}
+
+body.home-page .news-item--release .news-item-title {
+  font-size: var(--text-md);
+}
+
+body.home-page .news-item-arrow {
+  font-size: 22px;
+}
+
+/* Footer */
+body.home-page .footer-group-title {
+  font-size: clamp(28px, 3vw, 42px);
+}
+
+body.home-page .footer-mark {
+  font-size: clamp(88px, 14vw, 160px);
+}
+
+body.home-page .footer-links {
+  font-size: var(--text-md);
+}
+
+body.home-page .footer-bottom {
+  font-size: var(--text-sm);
+}
+
+body.home-page .back-to-top {
+  font-size: 10px;
+}
+
+body.home-page .footer-top-bar .container {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+@media (max-width: 767px) {
+  body.home-page {
+    --text-base: 18px;
+    --text-md: 20px;
+    --text-sm: 18px;
+    --text-xs: 16px;
+    --header-height: 60px;
+  }
+
+  body.home-page .logo-brand--header {
+    --logo-mark-h: 38px;
+  }
+
+  body.home-page .hero-title {
+    font-size: clamp(36px, 10vw, 52px);
+  }
+
+  body.home-page .hero-subtitle {
+    font-size: var(--text-md);
+  }
+
+  body.home-page .section-title {
+    font-size: clamp(32px, 8vw, 44px);
+  }
+
+  body.home-page .vision-diagram-logo {
+    font-size: 44px;
+  }
+
+  body.home-page .vision-diagram-center-text {
+    font-size: 14px;
+  }
+
+  body.home-page .vision-diagram-label {
+    font-size: 16px;
+  }
+}

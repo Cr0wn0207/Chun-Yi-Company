@@ -1,0 +1,49 @@
+.cover-hero {
+  position: relative;
+  margin-top: var(--header-height);
+  min-height: clamp(220px, 32vw, 360px);
+  display: flex;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+}
+
+.cover-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.42);
+}
+
+.cover-hero__inner {
+  position: relative;
+  z-index: 1;
+  padding: clamp(48px, 7vw, 88px) 0;
+}
+
+.cover-hero__title {
+  margin: 0 0 14px;
+  font-family: var(--font-en);
+  font-size: clamp(40px, 6vw, 72px);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #fff;
+  line-height: 1;
+}
+
+.cover-hero__subtitle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  font-size: clamp(14px, 1.4vw, 18px);
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.cover-hero__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #fff;
+  flex-shrink: 0;
+}

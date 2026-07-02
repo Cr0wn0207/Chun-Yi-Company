@@ -1,0 +1,29 @@
+.services-page-section {
+  background: #f4f6fa;
+}
+
+.services-page-desc {
+  margin: 0 0 clamp(28px, 3.5vw, 40px);
+  text-align: center;
+  font-size: clamp(14px, 1.3vw, 16px);
+  color: var(--scsk-text-sub);
+  line-height: 1.9;
+}
+
+.services-page-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 1024px) {
+  .services-page-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .services-page-grid {
+    grid-template-columns: 1fr;
+  }
+}

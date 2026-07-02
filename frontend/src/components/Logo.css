@@ -1,0 +1,131 @@
+.logo-brand {
+  display: flex;
+  flex-shrink: 0;
+  min-width: 0;
+}
+
+/* Header — CY mark centered over CHUN YI COMPANY */
+.logo-brand--header {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding-bottom: 4px;
+  padding-top: 0;
+  --logo-mark-h: clamp(44px, 5vw, 54px);
+}
+
+.logo-mark {
+  height: var(--logo-mark-h);
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.logo-mark-img {
+  display: block;
+  height: calc(var(--logo-mark-h) * 1.58);
+  width: auto;
+  max-width: none;
+  object-fit: cover;
+  object-position: 50% top;
+  pointer-events: none;
+  user-select: none;
+  transform: translateX(4%);
+}
+
+.logo-wordmark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 0;
+  width: 100%;
+  font-family: var(--font-en);
+  font-size: clamp(11px, 1.05vw, 13px);
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  color: #2a2f45;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.logo-name-line {
+  display: block;
+  width: clamp(18px, 2vw, 28px);
+  height: 2px;
+  background: linear-gradient(90deg, #1a2792 0%, #3d8fd9 100%);
+  flex-shrink: 0;
+}
+
+/* Footer */
+.logo-brand--footer {
+  background: #fff;
+  padding: 10px 14px;
+  border-radius: 4px;
+}
+
+.logo-brand--footer .logo-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  --logo-mark-h: 52px;
+}
+
+.logo-brand--footer .logo-wordmark {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+}
+
+.logo-brand--footer .logo-name-line {
+  width: 16px;
+}
+
+@media (max-width: 1280px) {
+  .logo-brand--header {
+    --logo-mark-h: 54px;
+    gap: 5px;
+  }
+
+  .logo-wordmark {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .logo-brand--header {
+    --logo-mark-h: 48px;
+  }
+
+  .logo-wordmark {
+    font-size: 9px;
+    letter-spacing: 0.18em;
+  }
+
+  .logo-name-line {
+    width: 14px;
+  }
+}
+
+@media (max-width: 767px) {
+  .logo-brand--header {
+    --logo-mark-h: 40px;
+    max-height: 44px;
+    gap: 0;
+  }
+
+  .logo-wordmark {
+    display: none;
+  }
+
+  .logo-brand--footer .logo-stack {
+    --logo-mark-h: 44px;
+  }
+}

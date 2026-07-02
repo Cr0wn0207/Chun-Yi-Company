@@ -1,0 +1,23 @@
+.service-breadcrumb {
+  font-size: 12px;
+  color: var(--scsk-text-muted);
+  margin-bottom: 16px;
+}
+
+.service-breadcrumb a:hover {
+  color: var(--scsk-blue);
+}
+
+.service-detail {
+  max-width: 800px;
+}
+
+.service-description {
+  font-size: 15px;
+  line-height: 2.2;
+  color: var(--scsk-text-sub);
+  margin-bottom: 40px;
+  padding: 32px;
+  background: var(--scsk-bg-gray);
+  border-left: 4px solid var(--scsk-blue);
+}

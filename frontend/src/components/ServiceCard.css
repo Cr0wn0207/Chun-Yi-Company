@@ -1,0 +1,192 @@
+.service-card {
+  position: relative;
+  min-height: 260px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  transition: transform var(--ease);
+}
+
+.service-card-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
+}
+
+.service-card--featured:hover .service-card-bg {
+  transform: scale(1.08);
+}
+
+.service-card:not(.service-card--featured):hover .service-card-bg {
+  transform: scale(1.05);
+}
+
+.service-card:hover {
+  transform: translateY(-4px);
+}
+
+.service-card--featured:hover {
+  z-index: 2;
+  transform: none;
+}
+
+.service-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.05) 0%, rgba(26, 39, 146, 0.88) 100%);
+  transition: background var(--ease);
+}
+
+.service-card:hover .service-card-overlay {
+  background: linear-gradient(180deg, rgba(26, 39, 146, 0.35) 0%, rgba(26, 39, 146, 0.95) 100%);
+}
+
+.service-card-body {
+  position: relative;
+  z-index: 1;
+  padding: 28px 24px;
+  color: #fff;
+  width: 100%;
+}
+
+.service-card-title {
+  font-family: var(--font-en);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  line-height: 1.4;
+  margin-bottom: 10px;
+  transform: skew(-4deg);
+  transform-origin: left bottom;
+}
+
+.service-card-subtitle {
+  font-size: 12px;
+  line-height: 1.7;
+  opacity: 0.9;
+  margin-bottom: 16px;
+}
+
+.service-card-link {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  opacity: 0.85;
+}
+
+/* SCSK-style featured cards (homepage) */
+.service-card--featured {
+  min-height: clamp(280px, 28vw, 420px);
+  align-items: stretch;
+  --service-slant: clamp(36px, 4vw, 64px);
+}
+
+.service-card--featured-left {
+  clip-path: polygon(0 0, 100% 0, calc(100% - var(--service-slant)) 100%, 0 100%);
+  z-index: 1;
+}
+
+.service-card--featured-right {
+  clip-path: polygon(var(--service-slant) 0, 100% 0, 100% 100%, 0 100%);
+  margin-left: calc(var(--service-slant) * -1);
+  z-index: 0;
+}
+
+.service-card--featured .service-card-overlay {
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.62) 0%,
+    rgba(0, 0, 0, 0.35) 45%,
+    rgba(0, 0, 0, 0.12) 100%
+  );
+}
+
+.service-card--featured:hover .service-card-overlay {
+  background: linear-gradient(
+    90deg,
+    rgba(26, 39, 146, 0.75) 0%,
+    rgba(26, 39, 146, 0.45) 45%,
+    rgba(26, 39, 146, 0.2) 100%
+  );
+}
+
+.service-card--featured .service-card-body {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(32px, 4vw, 56px) clamp(72px, 8vw, 96px) clamp(32px, 4vw, 56px)
+    clamp(28px, 4vw, 48px);
+  height: 100%;
+}
+
+.service-card--featured .service-card-text {
+  flex: 0 1 auto;
+  width: 100%;
+  max-width: 42em;
+  text-align: center;
+}
+
+.service-card--featured .service-card-title {
+  font-size: clamp(20px, 2.2vw, 30px);
+  transform: skew(-6deg);
+  transform-origin: center bottom;
+  margin-bottom: 12px;
+  line-height: 1.25;
+  text-align: center;
+}
+
+.service-card--featured .service-card-subtitle {
+  font-size: clamp(14px, 1.4vw, 17px);
+  line-height: 1.75;
+  margin: 0 auto;
+  max-width: 32em;
+  opacity: 0.95;
+  text-align: center;
+}
+
+.service-card--featured .service-card-arrow {
+  position: absolute;
+  top: 50%;
+  right: clamp(28px, 4vw, 48px);
+  transform: translateY(-50%);
+  flex-shrink: 0;
+  font-size: clamp(24px, 2.5vw, 36px);
+  font-weight: 300;
+  color: #fff;
+  line-height: 1;
+  transition: transform var(--ease);
+}
+
+.service-card--featured:hover .service-card-arrow {
+  transform: translateY(-50%) translateX(8px);
+}
+
+@media (max-width: 640px) {
+  .service-card--featured {
+    min-height: 240px;
+  }
+
+  .service-card--featured-left,
+  .service-card--featured-right {
+    clip-path: none;
+    margin-left: 0;
+    z-index: auto;
+  }
+
+  .service-card--featured .service-card-body {
+    padding: 28px 56px 28px 24px;
+  }
+
+  .service-card--featured .service-card-arrow {
+    right: 24px;
+    font-size: 22px;
+  }
+
+  .service-card--featured:hover .service-card-arrow {
+    transform: translateY(-50%) translateX(8px);
+  }
+}

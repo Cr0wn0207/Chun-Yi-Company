@@ -1,0 +1,20 @@
+.news-detail-meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+  font-size: 13px;
+}
+
+.news-detail-body {
+  max-width: 800px;
+}
+
+.news-detail-body p {
+  font-size: 15px;
+  line-height: 2.2;
+  color: var(--scsk-text-sub);
+  margin-bottom: 40px;
+  padding: 32px;
+  background: var(--scsk-bg-gray);
+}
