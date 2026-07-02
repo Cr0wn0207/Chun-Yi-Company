@@ -1,98 +1,117 @@
-# Chun Yi Technologies — 기업 웹사이트
+# Chun Yi Company — Corporate Website
 
-[SCSK](https://www.scsk.jp/) 스타일을 참고한 개인/소규모 기업용 코퍼레이트 웹사이트입니다.  
-**MERN 스택** (MongoDB, Express, React, Node.js)으로 구축되었습니다.
+A corporate website for a personal or small business, inspired by [SCSK](https://www.scsk.jp/).  
+Built with the **MERN stack** (MongoDB, Express, React, Node.js).
 
-## 주요 기능
+## Features
 
-| 영역 | 설명 |
-|------|------|
-| **홈** | 히어로 슬라이더, 비전, 토픽, 서비스 카드, 뉴스 목록 |
-| **기업정보** | 대표 메시지, 경영 이념, 회사 개요, 연혁 |
-| **제품·서비스** | 6개 핵심 사업 영역 (SCSK 스타일 카드 레이아웃) |
-| **뉴스** | 보도자료 / 공지 / 이벤트 필터 |
-| **문의하기** | MongoDB에 저장되는 문의 폼 |
+| Area | Description |
+|------|-------------|
+| **Home** | Hero slider, vision section, topics, service cards, news list |
+| **About** | CEO message, philosophy, company overview, history, office map |
+| **Products & Services** | Six core business areas (SCSK-style card layout) |
+| **News** | Press / notice / event filters |
+| **Contact** | Inquiry form stored in MongoDB |
+| **Admin CMS** | Manage news, company info, and inquiries (`/admin`) |
+| **i18n** | 10 languages (KO, EN, JA, ZH, DE, ES, FR, PT, VI, TH) |
 
-## 프로젝트 구조
+## Project Structure
 
 ```
+├── api/              # Vercel serverless entry
 ├── backend/          # Express API + MongoDB
 │   ├── models/       # News, Service, Company, Contact
-│   ├── routes/       # REST API 엔드포인트
-│   └── seed/         # 초기 데이터
+│   ├── routes/       # REST API endpoints (+ admin routes)
+│   └── seed/         # Initial data
 ├── frontend/         # React (Vite)
 │   └── src/
-│       ├── components/  # Header, Footer, Hero 등
-│       └── pages/       # Home, About, Services, News, Contact
-└── package.json      # 루트 스크립트 (concurrently)
+│       ├── components/  # Header, Footer, Hero, etc.
+│       ├── i18n/        # Translations and locale merge
+│       └── pages/       # Home, About, Services, News, Contact, Admin
+├── vercel.json       # Vercel deployment config
+└── package.json      # Root scripts (concurrently)
 ```
 
-## 시작하기
+## Getting Started
 
-### 사전 요구사항
+### Prerequisites
 
 - Node.js 18+
-- [MongoDB Atlas](https://www.mongodb.com/atlas) 무료 M0 클러스터 (권장)
+- [MongoDB Atlas](https://www.mongodb.com/atlas) free M0 cluster (recommended)
 
-### MongoDB Atlas 무료 클러스터 설정
+### MongoDB Atlas (free cluster)
 
-1. [MongoDB Atlas](https://cloud.mongodb.com/) 접속 → **Sign Up** (Google/GitHub 또는 이메일)
-2. **Build a Database** → **M0 FREE** 선택 → 리전 선택(가까운 AWS/GCP) → **Create**
-3. **Database Access** → **Add New Database User**
-   - Username / Password 생성 후 저장 (비밀번호는 반드시 기록)
+1. Sign up at [MongoDB Atlas](https://cloud.mongodb.com/)
+2. **Build a Database** → choose **M0 FREE** → pick a nearby region → **Create**
+3. **Database Access** → **Add New Database User** (save username and password)
 4. **Network Access** → **Add IP Address**
-   - 개발용: **Allow Access from Anywhere** (`0.0.0.0/0`)
-   - 운영 전에는 본인 IP만 허용 권장
-5. 클러스터 **Connect** → **Drivers** → **Node.js** 선택
-6. 연결 문자열 복사 후 `backend/.env` 수정:
+   - Development: **Allow Access from Anywhere** (`0.0.0.0/0`)
+   - Production: restrict to your IP or Vercel IPs when possible
+5. On the cluster, click **Connect** → **Drivers** → **Node.js**
+6. Copy the connection string and set it in `backend/.env`:
 
 ```env
-MONGODB_URI=mongodb+srv://사용자명:비밀번호@cluster0.xxxxx.mongodb.net/chunyi-corp?retryWrites=true&w=majority
+MONGODB_URI=mongodb+srv://USERNAME:PASSWORD@cluster0.xxxxx.mongodb.net/chunyi-corp?retryWrites=true&w=majority
 ```
 
-> 비밀번호에 `@`, `#`, `%` 등 특수문자가 있으면 URL 인코딩 필요 (`@` → `%40`)
+> URL-encode special characters in the password (`@` → `%40`, etc.)
 
-### 설치 및 실행
+### Install and Run
 
 ```bash
-# 1. 의존성 설치
+# 1. Install dependencies
 npm run install:all
 
-# 2. 환경 변수 설정 (Atlas 연결 문자열 입력)
-cp backend/.env.example backend/.env
-# backend/.env 의 MONGODB_URI 를 Atlas 연결 문자열로 수정
+# 2. Environment variables (create backend/.env from .env.example)
+cp .env.example backend/.env
+# Edit MONGODB_URI, JWT_SECRET, ADMIN_USERNAME, ADMIN_PASSWORD in backend/.env
 
-# 3. MongoDB 시드 데이터 입력
+# 3. Seed the database
 npm run seed
 
-# 4. 개발 서버 실행 (백엔드 :5000 + 프론트엔드 :3000)
+# 4. Start dev servers (backend :5000 + frontend :3000)
 npm run dev
 ```
 
-브라우저에서 http://localhost:3000 을 열어 확인하세요.
+Open http://localhost:3000 in your browser.
 
-## API 엔드포인트
+**Admin:** http://localhost:3000/admin/login (credentials from `backend/.env`)
 
-| Method | Path | 설명 |
-|--------|------|------|
-| GET | `/api/company` | 회사 정보 |
-| GET | `/api/services` | 서비스 목록 |
-| GET | `/api/services/:slug` | 서비스 상세 |
-| GET | `/api/news` | 뉴스 목록 (`?category=press&limit=10`) |
-| GET | `/api/news/:id` | 뉴스 상세 |
-| POST | `/api/contact` | 문의 접수 |
+**Frontend mock mode:** set `VITE_USE_MOCK_DATA=true` in `frontend/.env` to run without the API.
 
-## 커스터마이징
+## API Endpoints
 
-- **회사명/로고**: `frontend/src/components/Header.jsx`, `Footer.jsx`
-- **시드 데이터**: `backend/seed/seed.js` (회사 정보, 서비스, 뉴스)
-- **디자인 색상**: `frontend/src/styles/global.css` (`--color-primary` 등)
+| Method | Path | Description |
+|--------|------|-------------|
+| GET | `/api/company` | Company information |
+| GET | `/api/services` | Service list |
+| GET | `/api/services/:slug` | Service detail |
+| GET | `/api/news` | News list (`?category=press&limit=10`) |
+| GET | `/api/news/:id` | News detail |
+| POST | `/api/contact` | Submit inquiry |
+| POST | `/api/auth/login` | Admin login |
+| GET/PUT | `/api/admin/company` | Admin company (per locale) |
+| CRUD | `/api/admin/news` | Admin news (per locale) |
+| GET | `/api/admin/contacts` | Admin inquiries |
 
-## 프로덕션 빌드
+## Customization
+
+- **Company name / logo**: `frontend/src/components/Logo.jsx`, `Header.jsx`, `Footer.jsx`
+- **Translations**: `frontend/src/i18n/locales/*.js`
+- **Seed data**: `backend/seed/seed.js` (company, services, news)
+- **Design tokens**: `frontend/src/styles/global.css`
+
+## Production Build
+
+**Local (Express serves the built frontend):**
 
 ```bash
 npm run build
 NODE_ENV=production npm start --prefix backend
 ```
 
-Express가 `frontend/dist`를 정적 파일로 서빙합니다.
+**Vercel:** connect the GitHub repo and set environment variables from `.env.example` (`MONGODB_URI`, `JWT_SECRET`, `ADMIN_USERNAME`, `ADMIN_PASSWORD`).
+
+## License
+
+Private / all rights reserved unless otherwise noted.
