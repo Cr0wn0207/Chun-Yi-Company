@@ -17,12 +17,15 @@
   --scsk-bg-gray: #f5f5f5;
   --ceo-photo-bg: linear-gradient(
     90deg,
-    #c4c9d1 0%,
-    #e6e9ee 22%,
-    #eff1f4 50%,
-    #e6e9ee 78%,
-    #c4c9d1 100%
+    #9aa0aa 0%,
+    #adb3bc 16%,
+    #b8bec7 38%,
+    #bec4cd 50%,
+    #b8bec7 62%,
+    #adb3bc 84%,
+    #9aa0aa 100%
   );
+  --ceo-photo-border: #b4b9c2;
   --font-base: Meiryo, 'Hiragino Kaku Gothic Pro', 'MS PGothic', sans-serif;
   --font-display: 'Zen Kaku Gothic New', 'Noto Sans KR', sans-serif;
   --font-en: 'Manrope', sans-serif;

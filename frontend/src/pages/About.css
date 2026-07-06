@@ -196,8 +196,8 @@
   align-items: center;
   justify-content: center;
   background: var(--ceo-photo-bg);
-  border: 1px solid #dfe3e8;
-  box-shadow: 0 8px 24px rgba(26, 39, 146, 0.06);
+  border: 1px solid var(--ceo-photo-border);
+  box-shadow: 0 8px 24px rgba(26, 39, 146, 0.05);
 }
 
 .ceo-message-photo {
