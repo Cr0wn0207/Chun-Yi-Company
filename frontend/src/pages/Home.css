@@ -119,12 +119,12 @@
 }
 
 .topic-card-bg--ceo {
-  inset: clamp(12px, 1.6vw, 22px) 0 0 0;
+  inset: 0;
   background-color: #eef4fc;
-  background-size: 100% auto;
+  background-size: contain;
   background-position: center top;
   background-repeat: no-repeat;
-  transform-origin: center top;
+  transform-origin: center center;
 }
 
 .topic-card:hover .topic-card-bg--ceo {
