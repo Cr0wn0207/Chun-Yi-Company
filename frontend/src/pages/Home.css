@@ -120,7 +120,7 @@
 
 .topic-card-visual--ceo {
   height: clamp(148px, 15vw, 210px);
-  background: #eef4fc;
+  background: var(--ceo-photo-bg);
 }
 
 .topic-card-ceo-photo {
@@ -131,7 +131,7 @@
   height: 100%;
   object-fit: contain;
   object-position: center top;
-  background: #eef4fc;
+  background: var(--ceo-photo-bg);
   transition: transform 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   will-change: transform;
 }

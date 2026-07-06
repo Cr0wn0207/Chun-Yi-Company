@@ -15,6 +15,7 @@
   --scsk-border: #dedede;
   --scsk-bg: #ffffff;
   --scsk-bg-gray: #f5f5f5;
+  --ceo-photo-bg: linear-gradient(180deg, #eff0f2 0%, #e7e9ed 52%, #dfe3e8 100%);
   --font-base: Meiryo, 'Hiragino Kaku Gothic Pro', 'MS PGothic', sans-serif;
   --font-display: 'Zen Kaku Gothic New', 'Noto Sans KR', sans-serif;
   --font-en: 'Manrope', sans-serif;
