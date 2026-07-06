@@ -67,11 +67,19 @@ export default function Home() {
                 to={topic.link}
                 className="topic-card"
               >
-                <div className="topic-card-visual">
-                  <div
-                    className={`topic-card-bg${index === 0 ? ' topic-card-bg--ceo' : ''}`}
-                    style={{ backgroundImage: `url(${TOPIC_IMAGES[index % TOPIC_IMAGES.length]})` }}
-                  />
+                <div className={`topic-card-visual${index === 0 ? ' topic-card-visual--ceo' : ''}`}>
+                  {index === 0 ? (
+                    <img
+                      src={ceoPhoto}
+                      alt=""
+                      className="topic-card-ceo-photo"
+                    />
+                  ) : (
+                    <div
+                      className="topic-card-bg"
+                      style={{ backgroundImage: `url(${TOPIC_IMAGES[index % TOPIC_IMAGES.length]})` }}
+                    />
+                  )}
                   <span className="topic-card-edge topic-card-edge--right" aria-hidden />
                 </div>
                 <div className="topic-card-caption">

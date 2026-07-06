@@ -118,16 +118,25 @@
   background: var(--scsk-blue);
 }
 
-.topic-card-bg--ceo {
-  inset: 0;
-  background-color: #eef4fc;
-  background-size: contain;
-  background-position: center top;
-  background-repeat: no-repeat;
-  transform-origin: center center;
+.topic-card-visual--ceo {
+  height: clamp(148px, 15vw, 210px);
+  background: #eef4fc;
 }
 
-.topic-card:hover .topic-card-bg--ceo {
+.topic-card-ceo-photo {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center top;
+  background: #eef4fc;
+  transition: transform 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
+}
+
+.topic-card:hover .topic-card-ceo-photo {
   transform: scale(1.03);
 }
 
