@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Chun Yi Team">
+  <rect width="1200" height="630" fill="#ffffff"/>
+  <defs>
+    <linearGradient id="cy-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1a2792"/>
+      <stop offset="55%" stop-color="#2a4bb8"/>
+      <stop offset="100%" stop-color="#3d8fd9"/>
+    </linearGradient>
+    <linearGradient id="line-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1a2792"/>
+      <stop offset="100%" stop-color="#3d8fd9"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(600 250)">
+    <text
+      x="0"
+      y="0"
+      text-anchor="middle"
+      font-family="Manrope, Arial, sans-serif"
+      font-size="168"
+      font-weight="800"
+      font-style="italic"
+      fill="url(#cy-gradient)"
+      letter-spacing="0.02em"
+    >CY</text>
+  </g>
+  <g transform="translate(600 390)">
+    <line x1="-220" y1="0" x2="-150" y2="0" stroke="url(#line-gradient)" stroke-width="4"/>
+    <text
+      x="0"
+      y="8"
+      text-anchor="middle"
+      font-family="Manrope, Arial, sans-serif"
+      font-size="34"
+      font-weight="600"
+      fill="#2a2f45"
+      letter-spacing="0.24em"
+    >CHUN YI TEAM</text>
+    <line x1="150" y1="0" x2="220" y2="0" stroke="url(#line-gradient)" stroke-width="4"/>
+  </g>
+</svg>
