@@ -21,7 +21,7 @@ export default function News() {
 
   useEffect(() => {
     const params = category ? { category, limit: 50 } : { limit: 50 };
-    api.getNews(params).then(setNews).catch(console.error);
+    api.getNews(params, locale).then(setNews).catch(console.error);
   }, [category, locale]);
 
   return (

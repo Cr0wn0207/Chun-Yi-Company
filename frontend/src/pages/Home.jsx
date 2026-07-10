@@ -26,9 +26,9 @@ export default function Home() {
   const [company, setCompany] = useState(null);
 
   useEffect(() => {
-    api.getServices().then(setServices).catch(console.error);
-    api.getNews({ limit: 8 }).then(setNews).catch(console.error);
-    api.getCompany().then(setCompany).catch(console.error);
+    api.getServices(locale).then(setServices).catch(console.error);
+    api.getNews({ limit: 8 }, locale).then(setNews).catch(console.error);
+    api.getCompany(locale).then(setCompany).catch(console.error);
   }, [locale]);
 
   useEffect(() => {

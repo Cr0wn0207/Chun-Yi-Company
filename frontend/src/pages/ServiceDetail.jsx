@@ -16,7 +16,7 @@ export default function ServiceDetail() {
   });
 
   useEffect(() => {
-    api.getService(slug).then(setService).catch(console.error);
+    api.getService(slug, locale).then(setService).catch(console.error);
   }, [slug, locale]);
 
   if (!service) {

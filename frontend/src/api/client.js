@@ -17,8 +17,12 @@ const API_BASE = import.meta.env.VITE_API_URL || '/api';
 
 const delay = (data) => new Promise((resolve) => setTimeout(() => resolve(data), 200));
 
-function getLocaleMessages() {
-  return ALL_LOCALES[getCurrentLocale()] || ALL_LOCALES.ko;
+function getLocaleMessages(locale = getCurrentLocale()) {
+  return ALL_LOCALES[locale] || ALL_LOCALES.ko;
+}
+
+function resolveLocale(locale) {
+  return locale || getCurrentLocale();
 }
 
 function getLocalizedMock() {
@@ -39,7 +43,7 @@ function redirectToAdminLogin() {
   }
 }
 
-async function request(endpoint, options = {}) {
+async function request(endpoint, options = {}, locale = getCurrentLocale()) {
   const { headers: optionHeaders = {}, ...fetchOptions } = options;
   const hadAuth = Boolean(optionHeaders.Authorization);
   let response;
@@ -49,7 +53,7 @@ async function request(endpoint, options = {}) {
       ...fetchOptions,
       headers: {
         'Content-Type': 'application/json',
-        'Accept-Language': getCurrentLocale(),
+        'Accept-Language': resolveLocale(locale),
         ...optionHeaders,
       },
     });
@@ -84,32 +88,36 @@ function authRequest(endpoint, options = {}) {
 }
 
 export const api = {
-  getCompany: async () => {
-    const messages = getLocaleMessages();
+  getCompany: async (locale) => {
+    const activeLocale = resolveLocale(locale);
+    const messages = getLocaleMessages(activeLocale);
     if (USE_MOCK) return delay(buildCompany(messages));
-    const apiCompany = await request('/company');
-    return mergeCompanyWithLocale(apiCompany, messages);
+    const apiCompany = await request('/company', {}, activeLocale);
+    return mergeCompanyWithLocale(apiCompany, messages, activeLocale);
   },
 
-  getServices: async () => {
-    const messages = getLocaleMessages();
+  getServices: async (locale) => {
+    const activeLocale = resolveLocale(locale);
+    const messages = getLocaleMessages(activeLocale);
     if (USE_MOCK) return delay(buildServices(messages));
-    const apiServices = await request('/services');
-    return mergeServicesWithLocale(apiServices, messages);
+    const apiServices = await request('/services', {}, activeLocale);
+    return mergeServicesWithLocale(apiServices, messages, activeLocale);
   },
 
-  getService: async (slug) => {
-    const messages = getLocaleMessages();
+  getService: async (slug, locale) => {
+    const activeLocale = resolveLocale(locale);
+    const messages = getLocaleMessages(activeLocale);
     if (USE_MOCK) {
       const service = buildServices(messages).find((s) => s.slug === slug) || null;
       return delay(service);
     }
-    const apiService = await request(`/services/${slug}`);
-    return mergeServiceWithLocale(apiService, messages, slug);
+    const apiService = await request(`/services/${slug}`, {}, activeLocale);
+    return mergeServiceWithLocale(apiService, messages, slug, activeLocale);
   },
 
-  getNews: async (params = {}) => {
-    const messages = getLocaleMessages();
+  getNews: async (params = {}, locale) => {
+    const activeLocale = resolveLocale(locale);
+    const messages = getLocaleMessages(activeLocale);
     if (USE_MOCK) {
       let items = [...buildNews(messages)];
       if (params.category) {
@@ -122,18 +130,19 @@ export const api = {
     }
 
     const query = new URLSearchParams(params).toString();
-    const apiNews = await request(`/news${query ? `?${query}` : ''}`);
-    return mergeNewsListWithLocale(apiNews, messages);
+    const apiNews = await request(`/news${query ? `?${query}` : ''}`, {}, activeLocale);
+    return mergeNewsListWithLocale(apiNews, messages, activeLocale);
   },
 
-  getNewsItem: async (id) => {
-    const messages = getLocaleMessages();
+  getNewsItem: async (id, locale) => {
+    const activeLocale = resolveLocale(locale);
+    const messages = getLocaleMessages(activeLocale);
     if (USE_MOCK) {
       const item = buildNews(messages).find((n) => n._id === id) || null;
       return delay(item);
     }
-    const apiItem = await request(`/news/${id}`);
-    return mergeNewsItemWithLocale(apiItem, messages);
+    const apiItem = await request(`/news/${id}`, {}, activeLocale);
+    return mergeNewsItemWithLocale(apiItem, messages, activeLocale);
   },
 
   submitContact: (data) => {
@@ -165,16 +174,18 @@ export const api = {
     });
   },
 
-  adminGetNews: async () => {
-    const messages = getLocaleMessages();
+  adminGetNews: async (locale) => {
+    const activeLocale = resolveLocale(locale);
+    const messages = getLocaleMessages(activeLocale);
     const items = await authRequest('/admin/news');
-    return mergeNewsListWithLocale(items, messages);
+    return mergeNewsListWithLocale(items, messages, activeLocale);
   },
 
-  adminGetNewsItem: async (id) => {
-    const messages = getLocaleMessages();
+  adminGetNewsItem: async (id, locale) => {
+    const activeLocale = resolveLocale(locale);
+    const messages = getLocaleMessages(activeLocale);
     const item = await authRequest(`/admin/news/${id}`);
-    return mergeNewsItemWithLocale(item, messages);
+    return mergeNewsItemWithLocale(item, messages, activeLocale);
   },
 
   adminCreateNews: (data) =>

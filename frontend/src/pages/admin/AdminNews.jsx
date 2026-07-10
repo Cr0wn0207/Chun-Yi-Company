@@ -53,7 +53,7 @@ export default function AdminNews() {
   const loadNews = () => {
     setLoading(true);
     setError('');
-    api.adminGetNews()
+    api.adminGetNews(locale)
       .then(setItems)
       .catch((err) => setError(err.message))
       .finally(() => setLoading(false));
@@ -66,7 +66,7 @@ export default function AdminNews() {
   useEffect(() => {
     if (!editingId) return;
 
-    api.adminGetNewsItem(editingId)
+    api.adminGetNewsItem(editingId, locale)
       .then((item) => setForm(toFormState(item)))
       .catch((err) => setError(err.message));
   }, [editingId, locale]);

@@ -15,7 +15,7 @@ export default function Services() {
   const [services, setServices] = useState([]);
 
   useEffect(() => {
-    api.getServices().then(setServices).catch(console.error);
+    api.getServices(locale).then(setServices).catch(console.error);
   }, [locale]);
 
   return (

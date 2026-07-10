@@ -370,6 +370,32 @@
   background: #fff;
 }
 
+@media (max-width: 1280px) {
+  .vision-grid {
+    gap: clamp(28px, 4vw, 56px);
+  }
+
+  .services-section-head {
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .services-section-actions {
+    flex-wrap: wrap;
+    max-width: 100%;
+  }
+
+  .services-grid--featured {
+    --service-slant: clamp(28px, 3vw, 48px);
+    margin-top: clamp(20px, 2.5vw, 32px);
+  }
+
+  .news-release-layout {
+    gap: clamp(28px, 4vw, 56px);
+  }
+}
+
 @media (max-width: 1024px) {
   .topics-grid {
     grid-template-columns: repeat(2, 1fr);

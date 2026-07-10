@@ -44,10 +44,16 @@ const NEWS_META = [
 const SEED_TITLE_KEYS = {
   'CYTeam (Chun Yi Team), 클라우드 네이티브 솔루션 사업 확대': 'news-1',
   'Chun Yi Team, 클라우드 네이티브 솔루션 사업 확대': 'news-1',
+  'Chun Yi Team、クラウドネイティブソリューション事業を拡大': 'news-1',
+  'Chun Yi Team Expands Cloud-Native Solutions': 'news-1',
   '신규 파트너십 체결 — 글로벌 클라우드 프로바이더와 협력': 'news-2',
+  '新規パートナーシップ締結 — グローバルクラウドプロバイダーと協力': 'news-2',
   '2026 디지털 트랜스포메이션 세미나 개최 안내': 'news-3',
+  '2026デジタルトランスフォーメーションセミナー開催のお知らせ': 'news-3',
   '자사 개발 DevOps 플랫폼 v2.0 출시': 'news-4',
+  '自社開発DevOpsプラットフォーム v2.0 リリース': 'news-4',
   '정보보안 인증 ISO 27001 갱신 완료': 'news-5',
+  '情報セキュリティ認証 ISO 27001 更新完了': 'news-5',
 };
 
 function resolveSeedKey(item) {
@@ -74,7 +80,8 @@ export function buildCompany(messages) {
 
 function readLocaleBucket(apiCompany, locale) {
   if (!apiCompany?.locales) return null;
-  return apiCompany.locales[locale] || null;
+  const bucket = apiCompany.locales[locale] || apiCompany.locales?.get?.(locale);
+  return bucket || null;
 }
 
 function readLegacyBucket(apiCompany, locale) {
@@ -86,25 +93,35 @@ function readLegacyBucket(apiCompany, locale) {
     mission: apiCompany.mission,
     address: apiCompany.address,
     ceoMessage: apiCompany.ceoMessage,
-    values: apiCompany.values,
-    history: apiCompany.history,
   };
 }
 
-function pickLocalizedField(source, localized, key) {
+function normalizeHistory(history) {
+  if (!Array.isArray(history)) return history;
+  return history.map((item) => ({
+    ...item,
+    event: item.event?.replace(/Chun Yi Technologies/g, 'Chun Yi Team') ?? item.event,
+  }));
+}
+
+function pickLocalizedField(source, localized, key, { localeBucket = null } = {}) {
   const value = source?.[key];
   if (key === 'values' || key === 'history') {
-    return Array.isArray(value) && value.length ? value : localized[key];
+    if (localeBucket && Array.isArray(localeBucket[key]) && localeBucket[key].length) {
+      return key === 'history' ? normalizeHistory(localeBucket[key]) : localeBucket[key];
+    }
+    return key === 'history' ? normalizeHistory(localized[key]) : localized[key];
   }
   return value || localized[key];
 }
 
-export function mergeCompanyWithLocale(apiCompany, messages) {
+export function mergeCompanyWithLocale(apiCompany, messages, locale = getCurrentLocale()) {
   const localized = buildCompany(messages);
   if (!apiCompany) return localized;
 
-  const locale = getCurrentLocale();
-  const source = readLocaleBucket(apiCompany, locale) || readLegacyBucket(apiCompany, locale) || {};
+  const localeBucket = readLocaleBucket(apiCompany, locale);
+  const legacyBucket = readLegacyBucket(apiCompany, locale);
+  const source = localeBucket || legacyBucket || {};
 
   return {
     _id: apiCompany._id,
@@ -117,17 +134,17 @@ export function mergeCompanyWithLocale(apiCompany, messages) {
     mission: pickLocalizedField(source, localized, 'mission'),
     address: pickLocalizedField(source, localized, 'address'),
     ceoMessage: pickLocalizedField(source, localized, 'ceoMessage'),
-    values: pickLocalizedField(source, localized, 'values'),
-    history: pickLocalizedField(source, localized, 'history'),
+    values: pickLocalizedField(source, localized, 'values', { localeBucket }),
+    history: pickLocalizedField(source, localized, 'history', { localeBucket }),
   };
 }
 
-export function mergeServicesWithLocale(apiServices, messages) {
+export function mergeServicesWithLocale(apiServices, messages, locale = getCurrentLocale()) {
   const localized = buildServices(messages);
   if (!Array.isArray(apiServices)) return localized;
 
-  return apiServices.map((item) => {
-    const match = localized.find((entry) => entry.slug === item.slug);
+  return apiServices.map((item, index) => {
+    const match = localized.find((entry) => entry.slug === item.slug) || localized[index];
     if (!match) return item;
     return {
       ...item,
@@ -138,7 +155,7 @@ export function mergeServicesWithLocale(apiServices, messages) {
   });
 }
 
-export function mergeServiceWithLocale(apiService, messages, slug) {
+export function mergeServiceWithLocale(apiService, messages, slug, locale = getCurrentLocale()) {
   const localized = buildServices(messages).find((entry) => entry.slug === slug);
   if (!apiService || !localized) return apiService;
   return {
@@ -202,10 +219,9 @@ function readNewsI18nBucket(item, messages, locale) {
   };
 }
 
-export function mergeNewsItemWithLocale(item, messages) {
+export function mergeNewsItemWithLocale(item, messages, locale = getCurrentLocale()) {
   if (!item) return item;
 
-  const locale = getCurrentLocale();
   const source =
     readNewsLocaleBucket(item, locale) ||
     readNewsLegacyBucket(item, locale) ||
@@ -224,9 +240,9 @@ export function mergeNewsItemWithLocale(item, messages) {
   };
 }
 
-export function mergeNewsListWithLocale(apiNews, messages) {
+export function mergeNewsListWithLocale(apiNews, messages, locale = getCurrentLocale()) {
   if (!Array.isArray(apiNews)) return buildNews(messages);
-  return apiNews.map((item) => mergeNewsItemWithLocale(item, messages));
+  return apiNews.map((item) => mergeNewsItemWithLocale(item, messages, locale));
 }
 
 export function getDateLocale(locale) {

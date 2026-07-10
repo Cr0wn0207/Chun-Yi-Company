@@ -17,7 +17,7 @@ export default function NewsDetail() {
   });
 
   useEffect(() => {
-    api.getNewsItem(id).then(setItem).catch(console.error);
+    api.getNewsItem(id, locale).then(setItem).catch(console.error);
   }, [id, locale]);
 
   if (!item) {

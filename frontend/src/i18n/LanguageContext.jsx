@@ -1,8 +1,6 @@
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 import { DEFAULT_LOCALE, HTML_LANG, LOCALES } from './locales/index.js';
-import { setCurrentLocale } from './localeStore.js';
-
-const STORAGE_KEY = 'chunyi-locale';
+import { setCurrentLocale, STORAGE_KEY } from './localeStore.js';
 
 const LanguageContext = createContext(null);
 
@@ -13,7 +11,9 @@ function getNested(obj, path) {
 export function LanguageProvider({ children }) {
   const [locale, setLocaleState] = useState(() => {
     const saved = localStorage.getItem(STORAGE_KEY);
-    return LOCALES[saved] ? saved : DEFAULT_LOCALE;
+    const initial = LOCALES[saved] ? saved : DEFAULT_LOCALE;
+    setCurrentLocale(initial);
+    return initial;
   });
 
   const messages = LOCALES[locale];

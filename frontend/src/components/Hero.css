@@ -186,6 +186,21 @@
   padding-bottom: 12px;
 }
 
+@media (max-width: 1280px) {
+  .hero-side {
+    width: 40px;
+    padding: 20px 0;
+  }
+
+  .hero-text-wrap {
+    max-width: min(900px, calc(100vw - 40px - var(--container-pad) * 2));
+  }
+
+  .hero-subtitle {
+    max-width: min(680px, calc(100vw - 40px - var(--container-pad) * 2));
+  }
+}
+
 @media (max-width: 767px) {
   .hero {
     max-height: none;

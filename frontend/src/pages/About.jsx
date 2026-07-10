@@ -23,7 +23,7 @@ export default function About() {
   const [company, setCompany] = useState(null);
 
   useEffect(() => {
-    api.getCompany().then(setCompany).catch(console.error);
+    api.getCompany(locale).then(setCompany).catch(console.error);
   }, [locale]);
 
   if (!company) {
