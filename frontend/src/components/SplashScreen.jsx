@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import './SplashScreen.css';
 
-const SPLASH_BRAND_SRC = '/og-image.png';
+const SPLASH_BRAND_SRC = '/splash-brand.png';
 
 export default function SplashScreen({ onComplete }) {
   useEffect(() => {

@@ -25,7 +25,7 @@ html.is-splash .header {
 
 .splash-screen__brand {
   display: block;
-  width: min(92vw, 520px);
+  width: min(94vw, 640px);
   height: auto;
   object-fit: contain;
   pointer-events: none;
