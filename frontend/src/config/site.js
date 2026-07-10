@@ -1,4 +1,4 @@
-export const SITE_URL = import.meta.env.VITE_SITE_URL || 'https://chun-yi-company.vercel.app';
+export const SITE_URL = import.meta.env.VITE_SITE_URL || 'https://chun-yi-team.vercel.app';
 
 export const OG_IMAGE_PATH = '/og-image.png';
 
