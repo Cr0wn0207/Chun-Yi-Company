@@ -24,7 +24,10 @@ export default function SplashScreen({ onComplete }) {
   return (
     <div className="splash-screen" role="presentation" aria-hidden>
       <div className="splash-screen__logo">
-        <img src={logoCompany} alt="" className="splash-screen__logo-mark" draggable={false} />
+        <div className="splash-screen__logo-mark-wrap" aria-hidden>
+          <img src={logoCompany} alt="" className="splash-screen__logo-mark" draggable={false} />
+        </div>
+        <p className="splash-screen__wordmark">CHUN YI TEAM</p>
       </div>
     </div>
   );

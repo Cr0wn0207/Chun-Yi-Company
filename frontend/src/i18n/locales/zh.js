@@ -119,7 +119,7 @@ export default {
     mapTitle: '团队位置',
   },
   company: {
-    name: 'Chun Yi Team',
+    name: 'CYTeam (Chun Yi Team)',
     tagline: '面向未来的 IT 伙伴',
     vision: '我们以客户信任为基础创造新价值，通过技术创新开启更美好的未来。',
     mission: '我们提供端到端的 IT 服务，解决客户挑战并创造新价值。',
@@ -234,7 +234,7 @@ export default {
     placeholders: {
       lastName: '张',
       firstName: '三',
-      email: 'example@chunyi-tech.com',
+      email: 'example@chunyi-team.com',
       address: '埼玉県志木市本町六丁目8-12',
       company: 'Chun Yi Team',
       phone1: '010',

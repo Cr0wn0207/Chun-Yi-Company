@@ -42,6 +42,7 @@ const NEWS_META = [
 ];
 
 const SEED_TITLE_KEYS = {
+  'CYTeam (Chun Yi Team), 클라우드 네이티브 솔루션 사업 확대': 'news-1',
   'Chun Yi Team, 클라우드 네이티브 솔루션 사업 확대': 'news-1',
   '신규 파트너십 체결 — 글로벌 클라우드 프로바이더와 협력': 'news-2',
   '2026 디지털 트랜스포메이션 세미나 개최 안내': 'news-3',
@@ -64,7 +65,7 @@ export function buildCompany(messages) {
     founded: '2020',
     address: c.address,
     phone: '02-1234-5678',
-    email: 'contact@chunyi-tech.com',
+    email: 'contact@chunyi-team.com',
     ceoMessage: c.ceoMessage,
     values: c.values,
     history: c.history,

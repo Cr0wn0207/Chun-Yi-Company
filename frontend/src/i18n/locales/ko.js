@@ -120,7 +120,7 @@ export default {
     openInGoogleMaps: 'Google 지도에서 보기',
   },
   company: {
-    name: 'Chun Yi Team',
+    name: 'CYTeam (Chun Yi Team)',
     tagline: '미래를 함께 만들어가는 IT 파트너',
     vision: '고객과의 신뢰를 기반으로 새로운 가치를 창조하고, 기술 혁신을 통해 더 나은 미래를 열어갑니다.',
     mission: '비즈니스에 필요한 모든 IT 서비스를 원스톱으로 제공하며, 고객의 과제해결과 새로운 가치 창출에 기여합니다.',
@@ -235,7 +235,7 @@ export default {
     placeholders: {
       lastName: '홍',
       firstName: '길동',
-      email: 'example@chunyi-tech.com',
+      email: 'example@chunyi-team.com',
       address: '埼玉県志木市本町六丁目8-12',
       company: 'Chun Yi Team',
       phone1: '010',

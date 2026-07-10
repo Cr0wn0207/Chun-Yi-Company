@@ -28,7 +28,7 @@ export default function Footer() {
         <div className="container footer-inner">
         <div className="footer-main">
           <div className="footer-left">
-            <p className="footer-group-title">CHUN YI GROUP</p>
+            <p className="footer-group-title">CHUN YI TEAM</p>
             <ul className="footer-links">
               <li><Link to="/contact">{t('nav.contact')}</Link></li>
               <li><Link to="/about">{t('footer.about')}</Link></li>

@@ -23,13 +23,37 @@ html.is-splash .header {
   animation: splash-logo-grow 1.35s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
+.splash-screen__logo-mark-wrap {
+  --splash-mark-h: clamp(88px, 18vw, 140px);
+  height: var(--splash-mark-h);
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  line-height: 0;
+}
+
 .splash-screen__logo-mark {
   display: block;
-  height: clamp(120px, 24vw, 200px);
+  height: calc(var(--splash-mark-h) * 1.58);
   width: auto;
-  object-fit: contain;
+  max-width: none;
+  object-fit: cover;
+  object-position: 50% top;
   pointer-events: none;
   user-select: none;
+  transform: translateX(4%);
+}
+
+.splash-screen__wordmark {
+  margin: 0;
+  font-family: var(--font-en);
+  font-size: clamp(18px, 3.2vw, 28px);
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: var(--scsk-blue);
+  text-align: center;
 }
 
 @keyframes splash-logo-grow {

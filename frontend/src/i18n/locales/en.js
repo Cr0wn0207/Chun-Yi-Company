@@ -120,7 +120,7 @@ export default {
     openInGoogleMaps: 'Open in Google Maps',
   },
   company: {
-    name: 'Chun Yi Team',
+    name: 'CYTeam (Chun Yi Team)',
     tagline: 'Your IT Partner for the Future',
     vision: 'We create new value based on customer trust and open a better future through technology innovation.',
     mission: 'We provide end-to-end IT services to solve customer challenges and create new value.',
@@ -235,7 +235,7 @@ export default {
     placeholders: {
       lastName: 'Smith',
       firstName: 'John',
-      email: 'example@chunyi-tech.com',
+      email: 'example@chunyi-team.com',
       address: '8-12 Honcho 6-chome, Shiki-shi, Saitama, Japan',
       company: 'Chun Yi Team',
       phone1: '010',

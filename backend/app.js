@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors';
-import { connectDB } from './config/db.js';
+import { connectDB, isDBConnected } from './config/db.js';
 import { env } from './config/env.js';
 import newsRoutes from './routes/news.js';
 import serviceRoutes from './routes/services.js';
@@ -33,7 +33,12 @@ app.use('/api/admin/news', adminNewsRoutes);
 app.use('/api/admin/company', adminCompanyRoutes);
 app.use('/api/admin/contacts', adminContactRoutes);
 
-app.get('/api/health', (_req, res) => {
+app.get('/api/health', async (_req, res) => {
+  let mongoConnected = isDBConnected();
+  if (!mongoConnected && env('MONGODB_URI')) {
+    mongoConnected = await connectDB();
+  }
+
   res.json({
     status: 'ok',
     timestamp: new Date().toISOString(),
@@ -42,6 +47,8 @@ app.get('/api/health', (_req, res) => {
       adminPassword: Boolean(env('ADMIN_PASSWORD') || env('ADMIN_PASSWORD_HASH')),
       adminUsername: Boolean(env('ADMIN_USERNAME')),
     },
+    mongoConfigured: Boolean(env('MONGODB_URI')),
+    mongoConnected,
   });
 });
 

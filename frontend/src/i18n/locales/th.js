@@ -119,7 +119,7 @@ export default {
     mapTitle: 'ที่ตั้งทีม',
   },
   company: {
-    name: 'Chun Yi Team',
+    name: 'CYTeam (Chun Yi Team)',
     tagline: 'พันธมิตร IT สำหรับอนาคตของคุณ',
     vision: 'เราสร้างคุณค่าใหม่บนพื้นฐานความไว้วางใจของลูกค้า และเปิดอนาคตที่ดีกว่าผ่านนวัตกรรมทางเทคโนโลยี',
     mission: 'เราให้บริการ IT ครบวงจรเพื่อแก้ปัญหาของลูกค้าและสร้างคุณค่าใหม่',
@@ -234,7 +234,7 @@ export default {
     placeholders: {
       lastName: 'สมชาย',
       firstName: 'ใจดี',
-      email: 'example@chunyi-tech.com',
+      email: 'example@chunyi-team.com',
       address: '8-12 Honcho 6-chome, Shiki-shi, Saitama, Japan',
       company: 'Chun Yi Team',
       phone1: '010',
