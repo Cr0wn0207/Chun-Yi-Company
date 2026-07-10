@@ -231,4 +231,16 @@
   .contact-hero__title {
     letter-spacing: 0.04em;
   }
+
+  .contact-section {
+    padding-top: 40px;
+    padding-bottom: 56px;
+  }
+
+  .contact-form input,
+  .contact-form textarea,
+  .contact-form select {
+    font-size: 16px;
+    padding: 14px 16px;
+  }
 }

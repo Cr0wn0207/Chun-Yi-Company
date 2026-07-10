@@ -21,3 +21,16 @@
   background: var(--scsk-bg-gray);
   border-left: 4px solid var(--scsk-blue);
 }
+
+@media (max-width: 767px) {
+  .service-description {
+    padding: 20px;
+    font-size: 14px;
+    line-height: 2;
+  }
+
+  .service-breadcrumb {
+    font-size: 11px;
+    line-height: 1.6;
+  }
+}

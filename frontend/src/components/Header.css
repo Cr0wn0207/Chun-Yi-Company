@@ -197,6 +197,10 @@
     --header-height: 60px;
   }
 
+  .header {
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+
   .header-inner {
     padding-top: 8px;
     padding-bottom: 8px;
@@ -232,7 +236,7 @@
 
   .header-nav {
     position: fixed;
-    top: var(--header-height);
+    top: calc(var(--header-height) + env(safe-area-inset-top, 0px));
     left: 0;
     right: 0;
     bottom: 0;

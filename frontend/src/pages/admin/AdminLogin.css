@@ -140,3 +140,19 @@
 .admin-login__back a:hover {
   text-decoration: underline;
 }
+
+@media (max-width: 480px) {
+  .admin-login {
+    padding: 24px 16px;
+    padding-top: max(24px, env(safe-area-inset-top, 0px));
+  }
+
+  .admin-login__top {
+    top: max(12px, env(safe-area-inset-top, 0px));
+    right: 12px;
+  }
+
+  .admin-login__title {
+    font-size: 24px;
+  }
+}

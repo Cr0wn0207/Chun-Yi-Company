@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { api } from '../api/client';
 import { useLanguage } from '../i18n/LanguageContext';
+import { usePageMeta } from '../hooks/usePageMeta';
 import { getDateLocale } from '../i18n/content';
 import './NewsDetail.css';
 
@@ -9,6 +10,11 @@ export default function NewsDetail() {
   const { id } = useParams();
   const { locale, t } = useLanguage();
   const [item, setItem] = useState(null);
+
+  usePageMeta('newsDetail', {
+    title: item?.title,
+    description: item?.summary || item?.content,
+  });
 
   useEffect(() => {
     api.getNewsItem(id).then(setItem).catch(console.error);

@@ -4,6 +4,7 @@ import { api } from '../../api/client';
 import { setToken } from '../../auth/authStorage';
 import LanguageSwitcher from '../../components/LanguageSwitcher';
 import { useLanguage } from '../../i18n/LanguageContext';
+import { usePageMeta } from '../../hooks/usePageMeta';
 import '../../components/LanguageSwitcher.css';
 import './AdminLogin.css';
 
@@ -11,6 +12,7 @@ export default function AdminLogin() {
   const navigate = useNavigate();
   const location = useLocation();
   const { t } = useLanguage();
+  usePageMeta('admin');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');

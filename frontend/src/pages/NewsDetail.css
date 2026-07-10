@@ -18,3 +18,16 @@
   padding: 32px;
   background: var(--scsk-bg-gray);
 }
+
+@media (max-width: 767px) {
+  .news-detail-meta {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .news-detail-body p {
+    padding: 20px;
+    font-size: 14px;
+    line-height: 2;
+  }
+}

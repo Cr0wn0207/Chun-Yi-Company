@@ -3,6 +3,7 @@ import ServiceCard from '../components/ServiceCard';
 import CoverHero from '../components/CoverHero';
 import { api } from '../api/client';
 import { useLanguage } from '../i18n/LanguageContext';
+import { usePageMeta } from '../hooks/usePageMeta';
 import './Services.css';
 
 const HERO_IMAGE =
@@ -10,6 +11,7 @@ const HERO_IMAGE =
 
 export default function Services() {
   const { locale, t } = useLanguage();
+  usePageMeta('services');
   const [services, setServices] = useState([]);
 
   useEffect(() => {

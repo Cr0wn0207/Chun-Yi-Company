@@ -4,6 +4,7 @@ import NewsItem from '../components/NewsItem';
 import CoverHero from '../components/CoverHero';
 import { api } from '../api/client';
 import { useLanguage } from '../i18n/LanguageContext';
+import { usePageMeta } from '../hooks/usePageMeta';
 import './News.css';
 
 const HERO_IMAGE =
@@ -13,6 +14,7 @@ const CATEGORY_KEYS = ['', 'press', 'notice', 'event'];
 
 export default function News() {
   const { locale, t } = useLanguage();
+  usePageMeta('news');
   const [searchParams, setSearchParams] = useSearchParams();
   const category = searchParams.get('category') || '';
   const [news, setNews] = useState([]);

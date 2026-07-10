@@ -47,3 +47,23 @@
   background: #fff;
   flex-shrink: 0;
 }
+
+@media (max-width: 767px) {
+  .cover-hero {
+    min-height: clamp(180px, 42vw, 260px);
+  }
+
+  .cover-hero__inner {
+    padding: clamp(36px, 8vw, 56px) 0;
+  }
+
+  .cover-hero__subtitle {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .cover-hero__title {
+    font-size: clamp(32px, 9vw, 44px);
+  }
+}

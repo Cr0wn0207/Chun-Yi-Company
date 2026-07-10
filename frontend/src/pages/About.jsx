@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { api } from '../api/client';
 import { buildOfficeMapEmbed, buildOfficeMapExternalUrl } from '../i18n/content';
 import { useLanguage } from '../i18n/LanguageContext';
+import { usePageMeta } from '../hooks/usePageMeta';
 import CoverHero from '../components/CoverHero';
 import ceoPhoto from '../assets/ceo.png';
 import './About.css';
@@ -18,6 +19,7 @@ const SECTION_HEAD_IMAGES = {
 
 export default function About() {
   const { locale, t, messages } = useLanguage();
+  usePageMeta('about');
   const [company, setCompany] = useState(null);
 
   useEffect(() => {

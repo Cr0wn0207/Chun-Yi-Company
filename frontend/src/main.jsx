@@ -5,6 +5,7 @@ import { LanguageProvider } from './i18n/LanguageContext';
 import App from './App';
 import logoCompany from './assets/logo-company.png';
 import './styles/global.css';
+import './styles/responsive.css';
 
 function setHeadIcon(rel, href) {
   const existing = document.querySelector(`link[rel="${rel}"]`);

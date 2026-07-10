@@ -5,6 +5,7 @@ import ServiceCard from '../components/ServiceCard';
 import NewsItem from '../components/NewsItem';
 import { api } from '../api/client';
 import { useLanguage } from '../i18n/LanguageContext';
+import { usePageMeta } from '../hooks/usePageMeta';
 import ceoPhoto from '../assets/ceo.png';
 import VisionDiagram from '../components/VisionDiagram';
 import './Home.css';
@@ -19,6 +20,7 @@ const TOPIC_IMAGES = [
 
 export default function Home() {
   const { locale, messages } = useLanguage();
+  usePageMeta('home');
   const [services, setServices] = useState([]);
   const [news, setNews] = useState([]);
   const [company, setCompany] = useState(null);

@@ -2,12 +2,18 @@ import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { api } from '../api/client';
 import { useLanguage } from '../i18n/LanguageContext';
+import { usePageMeta } from '../hooks/usePageMeta';
 import './ServiceDetail.css';
 
 export default function ServiceDetail() {
   const { slug } = useParams();
   const { locale, t } = useLanguage();
   const [service, setService] = useState(null);
+
+  usePageMeta('serviceDetail', {
+    title: service?.title,
+    description: service?.subtitle || service?.description,
+  });
 
   useEffect(() => {
     api.getService(slug).then(setService).catch(console.error);

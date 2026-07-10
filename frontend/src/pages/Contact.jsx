@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
 import { api } from '../api/client';
 import { useLanguage } from '../i18n/LanguageContext';
+import { usePageMeta } from '../hooks/usePageMeta';
 import CoverHero from '../components/CoverHero';
 import './Contact.css';
 
@@ -23,6 +24,7 @@ const EMPTY_FORM = {
 
 export default function Contact() {
   const { t, messages } = useLanguage();
+  usePageMeta('contact');
   const [form, setForm] = useState(EMPTY_FORM);
   const [status, setStatus] = useState(null);
   const [loading, setLoading] = useState(false);

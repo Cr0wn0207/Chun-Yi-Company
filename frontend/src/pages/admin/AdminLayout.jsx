@@ -1,6 +1,7 @@
 import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import LanguageSwitcher from '../../components/LanguageSwitcher';
 import { useLanguage } from '../../i18n/LanguageContext';
+import { usePageMeta } from '../../hooks/usePageMeta';
 import { clearToken } from '../../auth/authStorage';
 import '../../components/LanguageSwitcher.css';
 import './AdminShared.css';
@@ -9,6 +10,7 @@ export default function AdminLayout() {
   const navigate = useNavigate();
   const location = useLocation();
   const { t } = useLanguage();
+  usePageMeta('admin');
 
   const NAV_ITEMS = [
     { to: '/admin', label: t('admin.nav.dashboard'), end: true },
