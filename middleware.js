@@ -1,8 +1,6 @@
 const CRAWLER_UA =
   /Slackbot|Slack-ImgProxy|Slackbot-LinkExpanding|facebookexternalhit|Facebot|Twitterbot|LinkedInBot|Discordbot|WhatsApp|TelegramBot/i;
 
-const UNFURL_VERSION = '5';
-
 export default function middleware(request) {
   const url = new URL(request.url);
   const userAgent = request.headers.get('user-agent') || '';
@@ -11,11 +9,11 @@ export default function middleware(request) {
     return;
   }
 
-  if (url.pathname !== '/' || url.searchParams.has('v')) {
+  if (url.pathname !== '/' || url.search) {
     return;
   }
 
-  url.searchParams.set('v', UNFURL_VERSION);
+  url.pathname = '/og-unfurl.html';
   return Response.redirect(url.toString(), 302);
 }
 
