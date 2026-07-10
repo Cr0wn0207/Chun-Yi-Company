@@ -1,5 +1,48 @@
 const SITE = 'Chun Yi Team';
 
+const META_EN = {
+  home: {
+    title: `IT Solutions Built for Real Business Growth | ${SITE}`,
+    description:
+      'Chun Yi Team (CYTeam) delivers digital transformation, AI, cloud, system development, IT consulting, and customer experience—from our home in Shiki, Saitama, Japan. We pair hands-on engineering with long-term partnership to help teams grow. Explore our services and contact us today.',
+  },
+  about: {
+    title: `About CYTeam | ${SITE}`,
+    description:
+      'Meet Chun Yi Team (CYTeam)—our CEO message, vision, mission, team overview, and history. Learn how we build lasting trust through technology and partner with clients in Japan and worldwide.',
+  },
+  services: {
+    title: `Products & Services | ${SITE}`,
+    description:
+      'From digital transformation and AI to cloud infrastructure, custom development, and CX—Chun Yi Team offers one-stop IT services for modern businesses. Browse our lineup and find the right fit for your team.',
+  },
+  serviceDetail: {
+    titleSuffix: ` | ${SITE}`,
+    descriptionFallback:
+      'Discover how Chun Yi Team (CYTeam) approaches this service area—capabilities, delivery, and ways we help teams move faster. Read more and start a conversation with our specialists.',
+  },
+  news: {
+    title: `News & Updates | ${SITE}`,
+    description:
+      'Press releases, announcements, and events from Chun Yi Team (CYTeam). Stay up to date on partnerships, product launches, seminars, and company milestones.',
+  },
+  newsDetail: {
+    titleSuffix: ` | ${SITE}`,
+    descriptionFallback:
+      'Read the latest news from Chun Yi Team (CYTeam)—updates, insights, and announcements from our team in Shiki, Saitama, Japan.',
+  },
+  contact: {
+    title: `Contact CYTeam | ${SITE}`,
+    description:
+      'Contact Chun Yi Team about services, partnerships, or careers. Share your inquiry and our team will respond promptly. Start your conversation with CYTeam today.',
+  },
+  admin: {
+    title: `Admin | ${SITE}`,
+    description: 'Chun Yi Team administration',
+    robots: 'noindex, nofollow',
+  },
+};
+
 const META_JA = {
   home: {
     title: `${SITE} | 未来を共に創るITパートナー`,
@@ -77,46 +120,6 @@ const META_KO = {
   },
 };
 
-const META_EN = {
-  home: {
-    title: `${SITE} | Your IT Partner for the Future`,
-    description:
-      'Chun Yi Team delivers DX, AI, cloud, system development, IT consulting, and CX. Based in Shiki, Saitama, Japan, we grow with our clients.',
-  },
-  about: {
-    title: `Team | ${SITE}`,
-    description:
-      'CEO message, vision, team overview, and history. Learn about Chun Yi Team’s mission and values.',
-  },
-  services: {
-    title: `Products & Services | ${SITE}`,
-    description:
-      'Digital transformation, AI & data, cloud infrastructure, system development, IT consulting, and CX services.',
-  },
-  serviceDetail: {
-    titleSuffix: ` | ${SITE}`,
-    descriptionFallback: 'Service details from Chun Yi Team.',
-  },
-  news: {
-    title: `News | ${SITE}`,
-    description: 'Latest news, press releases, and announcements from Chun Yi Team.',
-  },
-  newsDetail: {
-    titleSuffix: ` | ${SITE}`,
-    descriptionFallback: 'News article from Chun Yi Team.',
-  },
-  contact: {
-    title: `Contact | ${SITE}`,
-    description:
-      'Contact us about services, partnerships, or careers. The Chun Yi Team will respond promptly.',
-  },
-  admin: {
-    title: `Admin | ${SITE}`,
-    description: 'Chun Yi Team administration',
-    robots: 'noindex, nofollow',
-  },
-};
-
 export const META_BY_LOCALE = {
   ja: META_JA,
   ko: META_KO,
@@ -144,6 +147,7 @@ export function getPageMeta(locale, pageKey, overrides = {}) {
   return {
     title,
     description: description.slice(0, 320),
+    siteName: SITE,
     robots: page.robots,
   };
 }

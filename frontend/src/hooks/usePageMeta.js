@@ -22,25 +22,42 @@ function clearRobotsMeta() {
   document.querySelector('meta[name="robots"]')?.remove();
 }
 
+function upsertLink(rel, href) {
+  if (!href) return;
+
+  let el = document.querySelector(`link[rel="${rel}"]`);
+  if (!el) {
+    el = document.createElement('link');
+    el.setAttribute('rel', rel);
+    document.head.appendChild(el);
+  }
+
+  el.setAttribute('href', href);
+}
+
 export function usePageMeta(pageKey, overrides = {}) {
   const { locale } = useLanguage();
   const { title: overrideTitle, description: overrideDescription } = overrides;
 
   useEffect(() => {
-    const { title, description, robots } = getPageMeta(locale, pageKey, {
+    const { title, description, siteName, robots } = getPageMeta(locale, pageKey, {
       title: overrideTitle,
       description: overrideDescription,
     });
+
+    const pageUrl = `${window.location.origin}${window.location.pathname}`;
 
     document.title = title;
     upsertMeta('description', description);
     upsertMeta('og:title', title, 'property');
     upsertMeta('og:description', description, 'property');
     upsertMeta('og:type', 'website', 'property');
-    upsertMeta('og:site_name', 'Chun Yi Team', 'property');
+    upsertMeta('og:site_name', siteName, 'property');
+    upsertMeta('og:url', pageUrl, 'property');
     upsertMeta('twitter:card', 'summary', 'name');
     upsertMeta('twitter:title', title);
     upsertMeta('twitter:description', description);
+    upsertLink('canonical', pageUrl);
 
     if (robots) {
       upsertMeta('robots', robots);
