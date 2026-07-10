@@ -17,43 +17,19 @@ html.is-splash .header {
 
 .splash-screen__logo {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 14px;
+  justify-content: center;
+  padding: 24px;
   animation: splash-logo-grow 1.35s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
-.splash-screen__logo-mark-wrap {
-  --splash-mark-h: clamp(88px, 18vw, 140px);
-  height: var(--splash-mark-h);
-  width: 100%;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  line-height: 0;
-}
-
-.splash-screen__logo-mark {
+.splash-screen__brand {
   display: block;
-  height: calc(var(--splash-mark-h) * 1.58);
-  width: auto;
-  max-width: none;
-  object-fit: cover;
-  object-position: 50% top;
+  width: min(92vw, 520px);
+  height: auto;
+  object-fit: contain;
   pointer-events: none;
   user-select: none;
-  transform: translateX(4%);
-}
-
-.splash-screen__wordmark {
-  margin: 0;
-  font-family: var(--font-en);
-  font-size: clamp(18px, 3.2vw, 28px);
-  font-weight: 800;
-  letter-spacing: 0.14em;
-  color: var(--scsk-blue);
-  text-align: center;
 }
 
 @keyframes splash-logo-grow {

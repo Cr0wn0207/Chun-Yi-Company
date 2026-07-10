@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
-import logoCompany from '../assets/logo-company.png';
 import './SplashScreen.css';
+
+const SPLASH_BRAND_SRC = '/og-image.png';
 
 export default function SplashScreen({ onComplete }) {
   useEffect(() => {
@@ -24,10 +25,12 @@ export default function SplashScreen({ onComplete }) {
   return (
     <div className="splash-screen" role="presentation" aria-hidden>
       <div className="splash-screen__logo">
-        <div className="splash-screen__logo-mark-wrap" aria-hidden>
-          <img src={logoCompany} alt="" className="splash-screen__logo-mark" draggable={false} />
-        </div>
-        <p className="splash-screen__wordmark">CHUN YI TEAM</p>
+        <img
+          src={SPLASH_BRAND_SRC}
+          alt="Chun Yi Team"
+          className="splash-screen__brand"
+          draggable={false}
+        />
       </div>
     </div>
   );
